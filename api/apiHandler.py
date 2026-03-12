@@ -1,12 +1,16 @@
-
+from secrets import randbelow
 from flask_restful import Api, Resource, reqparse
+from datetime import datetime
 
 class HelloApiHandler(Resource):
+
   def get(self):
-    return {
-      'resultStatus': 'SUCCESS',
-      'message': "This is working"
-      }
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    
+    return (
+      "Current Time = " + current_time
+    )
 
   def post(self):
     print(self)
